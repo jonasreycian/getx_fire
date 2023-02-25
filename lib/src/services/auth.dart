@@ -5,15 +5,15 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../core/const.dart';
-import '../core/exceptions.dart';
 import '../core/helpers.dart';
+import '../exceptions/exceptions.dart';
 import '../models/models.dart';
 
-/// {@template authenication_service}
+/// {@template authentication_service}
 /// A service that handles authentication.
 /// {@endtemplate}
 class AuthenticationService extends GetxService {
-  /// {@macro authenication_service}
+  /// {@macro authentication_service}
   AuthenticationService({
     FirebaseAuth? firebaseAuth,
     GoogleSignIn? googleSignIn,
@@ -133,10 +133,14 @@ class AuthenticationService extends GetxService {
         lastName: parsedGoogleToken?.familyName,
       );
     } on FirebaseAuthException catch (e) {
-      // If there already exists an account with the email address asserted by the credential. Resolve this by calling [fetchSignInMethodsForEmail] and then asking the user to sign in using one of the returned providers. Once the user is signed in, the original credential can be linked to the user with [linkWithCredential].
+      // If there already exists an account with the email address asserted by
+      // the credential. Resolve this by calling [fetchSignInMethodsForEmail]
+      // and then asking the user to sign in using one of the returned
+      // providers. Once the user is signed in, the original credential can be
+      // linked to the user with [linkWithCredential].
 
       // AuthResultStatus status = AuthResultStatus(e.code);
-      // if (status.value == AuthResultStatusEnum.accountExistsWithDifferentCredential) {
+      // if (status.value == FirebaseAuthCodeEnum.accountExistsWithDifferentCredential) {
       //   final response = await _firebaseAuth.fetchSignInMethodsForEmail('email');
       //   if (response.contains('google.com')) {
       //     final x = await _firebaseAuth.signInWithPopup(GoogleAuthProvider());
