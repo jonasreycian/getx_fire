@@ -9,6 +9,7 @@ import '../../enums/enums.dart';
 class SignInWithEmailAndPasswordException implements Exception {
   /// {@macro sign_in_with_email_and_password_exception}
   SignInWithEmailAndPasswordException([
+    this.code = FirebaseAuthCodeEnum.unknown,
     this.message = 'An unknown error occured, please try again.',
   ]);
 
@@ -16,28 +17,34 @@ class SignInWithEmailAndPasswordException implements Exception {
   /// [FirebaseAuthException] code.
   factory SignInWithEmailAndPasswordException.fromCode(String code) {
     final AuthResultStatus status = AuthResultStatus(code);
+    String message = '';
     switch (status.value) {
       case FirebaseAuthCodeEnum.invalidEmail:
-        return SignInWithEmailAndPasswordException(
-          'Email is not valid or badly formatted.',
-        );
+        message = 'Email is not valid or badly formatted.';
+        break;
+
       case FirebaseAuthCodeEnum.userDisabled:
-        return SignInWithEmailAndPasswordException(
-          'Your account has been disabled. Please contact support for help.',
-        );
+        message = 'Your account has been disabled. Please contact support for help.';
+        break;
+
       case FirebaseAuthCodeEnum.userNotFound:
-        return SignInWithEmailAndPasswordException(
-          'Email not found, please try again.',
-        );
+        message = 'Email not found, please try again.';
+        break;
+
       case FirebaseAuthCodeEnum.wrongPassword:
-        return SignInWithEmailAndPasswordException(
-          'Incorrect password, please try again.',
-        );
+        message = 'Incorrect password, please try again.';
+        break;
+
       default:
-        return SignInWithEmailAndPasswordException();
+        message = 'An unknown error occured, please try again.';
     }
+
+    return SignInWithEmailAndPasswordException(status.value, message);
   }
 
   /// The associated error message.
   final String message;
+
+  /// The associated error code.
+  final FirebaseAuthCodeEnum code;
 }

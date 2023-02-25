@@ -7,6 +7,7 @@ import '../../enums/enums.dart';
 class SignInAnonymouslyException implements Exception {
   /// {@macro sign_in_anonymously_exception}
   SignInAnonymouslyException({
+    this.code = FirebaseAuthCodeEnum.unknown,
     this.message = 'An unknown error occured.',
   });
 
@@ -14,16 +15,22 @@ class SignInAnonymouslyException implements Exception {
   /// [FirebaseAuthException] code.
   factory SignInAnonymouslyException.fromCode(String code) {
     AuthResultStatus status = AuthResultStatus(code);
+    String message = '';
     switch (status.value) {
       case FirebaseAuthCodeEnum.operationNotAllowed:
-        return SignInAnonymouslyException(
-          message: 'Operation not allowed. Please contact support for help.',
-        );
+        message = 'Operation not allowed. Please contact support for help.';
+        break;
+
       default:
-        return SignInAnonymouslyException();
+        message = 'An unknown error occured.';
     }
+
+    return SignInAnonymouslyException(message: message, code: status.value);
   }
 
   /// The associated error message.
   final String message;
+
+  /// The associated error code.
+  final FirebaseAuthCodeEnum code;
 }

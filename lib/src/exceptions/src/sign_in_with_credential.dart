@@ -9,6 +9,7 @@ import '../../enums/enums.dart';
 class SignInWithCredentialException implements Exception {
   /// {@macro sign_in_with_credential_exception}
   SignInWithCredentialException({
+    this.code = FirebaseAuthCodeEnum.unknown,
     this.message = 'An unknown error occured.',
   });
 
@@ -16,44 +17,49 @@ class SignInWithCredentialException implements Exception {
   /// [FirebaseAuthException] code.
   factory SignInWithCredentialException.fromCode(String code) {
     AuthResultStatus status = AuthResultStatus(code);
+    String message = '';
     switch (status.value) {
       case FirebaseAuthCodeEnum.accountExistsWithDifferentCredential:
-        return SignInWithCredentialException(
-          message: 'Account already exists with a different credential.',
-        );
+        message = 'Account already exists with a different credential.';
+        break;
       case FirebaseAuthCodeEnum.invalidCredential:
-        return SignInWithCredentialException(
-          message: 'The credential received is malformed or has expired.',
-        );
+        message = 'The credential received is malformed or has expired.';
+        break;
+
       case FirebaseAuthCodeEnum.operationNotAllowed:
-        return SignInWithCredentialException(
-          message: 'Operation not allowed. Please contact support for help.',
-        );
+        message = 'Operation not allowed. Please contact support for help.';
+        break;
+
       case FirebaseAuthCodeEnum.userDisabled:
-        return SignInWithCredentialException(
-          message: 'Your account has been disabled. Please contact support for help.',
-        );
+        message = 'Your account has been disabled. Please contact support for help.';
+        break;
+
       case FirebaseAuthCodeEnum.userNotFound:
-        return SignInWithCredentialException(
-          message: 'User with this email does not exist.',
-        );
+        message = 'User with this email does not exist.';
+        break;
+
       case FirebaseAuthCodeEnum.wrongPassword:
-        return SignInWithCredentialException(
-          message: 'Incorrect password, please try again.',
-        );
+        message = 'Incorrect password; please try again.';
+        break;
+
       case FirebaseAuthCodeEnum.invalidVerificationCode:
-        return SignInWithCredentialException(
-          message: 'The verification code received is invalid. Please try again.',
-        );
+        message = 'The verification code received is invalid. Please try again.';
+        break;
+
       case FirebaseAuthCodeEnum.invalidVerificationId:
-        return SignInWithCredentialException(
-          message: 'The verification ID received is invalid. Please try again.',
-        );
+        message = 'The verification ID received is invalid. Please try again.';
+        break;
+
       default:
-        return SignInWithCredentialException();
+        message = 'An unknown error occured.';
     }
+
+    return SignInWithCredentialException(message: message, code: status.value);
   }
 
   /// The associated error message.
   final String message;
+
+  /// The associated error code.
+  final FirebaseAuthCodeEnum code;
 }

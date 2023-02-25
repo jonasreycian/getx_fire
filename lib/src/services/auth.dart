@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
+import '../../getx_fire.dart';
 import '../core/const.dart';
 import '../core/helpers.dart';
 import '../exceptions/exceptions.dart';
@@ -20,19 +21,27 @@ class AuthenticationService extends GetxService {
     GetStorage? box,
   })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn(),
-        _box = box ?? GetStorage();
+        _box = box ?? GetStorage()
+          ..initStorage;
 
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final GetStorage _box;
 
+  @override
+  void onInit() async {
+    super.onInit();
+    print('AuthenticationService initialized');
+    await _box.writeIfNull(StorageKeys.userRefreshToken, currentUser?.refreshToken);
+  }
+
   /// Gets the current user token.
-  String? get userToken => _box.read<String?>(StorageKeys.userRefreshToken);
+  String? get userRefreshToken => _box.read<String?>(StorageKeys.userRefreshToken);
 
   /// Returns the current user.
   User? get currentUser => _firebaseAuth.currentUser;
 
-  bool get isActiveUserToken => userToken != null && currentUser?.refreshToken == userToken;
+  bool get isActiveUserToken => userRefreshToken != null && currentUser?.refreshToken == userRefreshToken;
 
   /// Stream of [User] which will emit the current user when
   /// the authentication state changes.
@@ -213,8 +222,14 @@ class AuthenticationService extends GetxService {
         firstName: appleCredential.givenName,
         lastName: appleCredential.familyName,
       );
-    } on FirebaseAuthException catch (e) {
-      throw SignInWithCredentialException.fromCode(e.code);
+    } on SignInWithAppleNotSupportedException catch (e) {
+      throw SignInWithCredentialException(message: e.message);
+    } on SignInWithAppleAuthorizationException catch (e) {
+      throw SignInWithCredentialException(message: e.message);
+    } on UnknownSignInWithAppleException catch (e) {
+      throw SignInWithCredentialException(message: e.message ?? 'Unknown error');
+    } on SignInWithCredentialException catch (_) {
+      rethrow;
     } catch (e) {
       throw SignInWithCredentialException();
     }

@@ -69,8 +69,7 @@ class BillingAddress with _$BillingAddress {
   String? get country => country;
   String? get zipCode => zipCode;
 
-  factory BillingAddress.fromJson(Map<String, dynamic> json) =>
-      _$BillingAddressFromJson(json);
+  factory BillingAddress.fromJson(Map<String, dynamic> json) => _$BillingAddressFromJson(json);
   const factory BillingAddress.empty() = _BillingAddressEmpty;
 
   bool get isEmpty => this is _BillingAddressEmpty;
@@ -89,7 +88,7 @@ class BillingAddress with _$BillingAddress {
   fromJson: true,
   toJson: true,
 )
-class ParsedGoogleToken {
+class ParsedGoogleToken with _$ParsedGoogleToken {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory ParsedGoogleToken({
     required String givenName,
@@ -103,6 +102,5 @@ class ParsedGoogleToken {
   String get familyName => familyName;
 
   // Add named constructor to parse a json
-  factory ParsedGoogleToken.fromJson(Map<String, dynamic> json) =>
-      _$ParsedGoogleTokenFromJson(json);
+  factory ParsedGoogleToken.fromJson(Map<String, dynamic> json) => _$ParsedGoogleTokenFromJson(json);
 }
