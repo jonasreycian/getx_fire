@@ -61,5 +61,6 @@ class AuthResultStatus {
 }
 
 abstract class StorageKeys {
-  String userToken = "userToken";
+  static const String userRefreshToken = 'user_refresh_token';
+  static const String userSelectedTheme = 'user_selected_theme';
 }

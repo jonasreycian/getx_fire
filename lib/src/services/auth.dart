@@ -4,9 +4,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-import '../../getx_fire.dart';
+import '../core/const.dart';
 import '../core/exceptions.dart';
 import '../core/helpers.dart';
+import '../models/models.dart';
 
 /// {@template authenication_service}
 /// A service that handles authentication.
@@ -25,17 +26,13 @@ class AuthenticationService extends GetxService {
   final GoogleSignIn _googleSignIn;
   final GetStorage _box;
 
-  /// The current user key.
-  final _kUserToken = 'current_user_token';
-
   /// Gets the current user token.
-  String? get userToken => _box.read<String?>(_kUserToken);
+  String? get userToken => _box.read<String?>(StorageKeys.userRefreshToken);
 
   /// Returns the current user.
   User? get currentUser => _firebaseAuth.currentUser;
 
-  bool get isActiveUserToken =>
-      userToken != null && currentUser?.refreshToken == userToken;
+  bool get isActiveUserToken => userToken != null && currentUser?.refreshToken == userToken;
 
   /// Stream of [User] which will emit the current user when
   /// the authentication state changes.
@@ -44,7 +41,7 @@ class AuthenticationService extends GetxService {
   Stream<User?> get user {
     return _firebaseAuth.authStateChanges().map(
       (firebaseUser) {
-        _box.writeIfNull(_kUserToken, firebaseUser?.refreshToken);
+        _box.writeIfNull(StorageKeys.userRefreshToken, firebaseUser?.refreshToken);
         return firebaseUser;
       },
     );
@@ -157,8 +154,7 @@ class AuthenticationService extends GetxService {
   /// Returns the signed in [UserCredential].
   ///
   /// Throws a [SignInWithCredentialException] if an error occurs.
-  Future<UserCredential> signInWithCredential(
-      {required OAuthCredential credential}) async {
+  Future<UserCredential> signInWithCredential({required OAuthCredential credential}) async {
     try {
       return await _firebaseAuth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
@@ -206,8 +202,7 @@ class AuthenticationService extends GetxService {
 
       // Sign in the user with Firebase. If the nonce we generated earlier does
       // not match the nonce in `appleCredential.identityToken`, sign in will fail.
-      final authResult =
-          await signInWithCredential(credential: oauthCredential);
+      final authResult = await signInWithCredential(credential: oauthCredential);
 
       return UserDetail(
         id: authResult.user!.uid,
@@ -230,7 +225,7 @@ class AuthenticationService extends GetxService {
     try {
       await _firebaseAuth.signOut();
       await _googleSignIn.signOut();
-      _box.remove(_kUserToken);
+      _box.remove(StorageKeys.userRefreshToken);
     } catch (e) {
       throw SignOutException();
     }
