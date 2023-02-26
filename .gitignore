@@ -11,6 +11,11 @@ pubspec.lock
 
 erToken
 
+<<<<<<< HEAD
 # VS Code
 .flutter-plugins
 .flutter-plugins*
+=======
+.flutter-plugins
+.flutter-plugins-dependencies
+>>>>>>> release/0.0.0+1
