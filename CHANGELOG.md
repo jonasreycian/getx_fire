@@ -1,6 +1,6 @@
-## 0.0.1
+## 0.0.1+1
 
-- Supported Firebase analytics
+- Added a service layer AuthenticationService using GetxService.
 
 ## 0.0.0
 
