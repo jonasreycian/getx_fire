@@ -11,6 +11,5 @@ pubspec.lock
 
 erToken
 
-# VS Code
 .flutter-plugins
-.flutter-plugins*
+.flutter-plugins-dependencies
