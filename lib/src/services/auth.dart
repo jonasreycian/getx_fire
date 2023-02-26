@@ -31,7 +31,6 @@ class AuthenticationService extends GetxService {
   @override
   void onInit() async {
     super.onInit();
-    print('AuthenticationService initialized');
     await _box.writeIfNull(StorageKeys.userRefreshToken, currentUser?.refreshToken);
   }
 
@@ -60,13 +59,13 @@ class AuthenticationService extends GetxService {
   ///
   /// Returns the created [User].
   ///
-  /// Throws an [AuthenticationException] if an error occurs.
+  /// Throws an [SignUpWithEmailAndPasswordException] if an error occurs.
   Future<User?> signUpEmailWithPassword({
     required String email,
     required String password,
   }) async {
     try {
-      final credential = await _firebaseAuth.createUserWithEmailAndPassword(
+      UserCredential credential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
