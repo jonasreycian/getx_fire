@@ -4,35 +4,43 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
+import '../../getx_fire.dart';
 import '../core/const.dart';
-import '../core/exceptions.dart';
 import '../core/helpers.dart';
+import '../exceptions/exceptions.dart';
 import '../models/models.dart';
 
-/// {@template authenication_service}
+/// {@template authentication_service}
 /// A service that handles authentication.
 /// {@endtemplate}
 class AuthenticationService extends GetxService {
-  /// {@macro authenication_service}
+  /// {@macro authentication_service}
   AuthenticationService({
     FirebaseAuth? firebaseAuth,
     GoogleSignIn? googleSignIn,
     GetStorage? box,
   })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn(),
-        _box = box ?? GetStorage();
+        _box = box ?? GetStorage()
+          ..initStorage;
 
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final GetStorage _box;
 
+  @override
+  void onInit() async {
+    super.onInit();
+    await _box.writeIfNull(StorageKeys.userRefreshToken, currentUser?.refreshToken);
+  }
+
   /// Gets the current user token.
-  String? get userToken => _box.read<String?>(StorageKeys.userRefreshToken);
+  String? get userRefreshToken => _box.read<String?>(StorageKeys.userRefreshToken);
 
   /// Returns the current user.
   User? get currentUser => _firebaseAuth.currentUser;
 
-  bool get isActiveUserToken => userToken != null && currentUser?.refreshToken == userToken;
+  bool get isActiveUserToken => userRefreshToken != null && currentUser?.refreshToken == userRefreshToken;
 
   /// Stream of [User] which will emit the current user when
   /// the authentication state changes.
@@ -51,13 +59,13 @@ class AuthenticationService extends GetxService {
   ///
   /// Returns the created [User].
   ///
-  /// Throws an [AuthenticationException] if an error occurs.
+  /// Throws an [SignUpWithEmailAndPasswordException] if an error occurs.
   Future<User?> signUpEmailWithPassword({
     required String email,
     required String password,
   }) async {
     try {
-      final credential = await _firebaseAuth.createUserWithEmailAndPassword(
+      UserCredential credential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -133,10 +141,14 @@ class AuthenticationService extends GetxService {
         lastName: parsedGoogleToken?.familyName,
       );
     } on FirebaseAuthException catch (e) {
-      // If there already exists an account with the email address asserted by the credential. Resolve this by calling [fetchSignInMethodsForEmail] and then asking the user to sign in using one of the returned providers. Once the user is signed in, the original credential can be linked to the user with [linkWithCredential].
+      // If there already exists an account with the email address asserted by
+      // the credential. Resolve this by calling [fetchSignInMethodsForEmail]
+      // and then asking the user to sign in using one of the returned
+      // providers. Once the user is signed in, the original credential can be
+      // linked to the user with [linkWithCredential].
 
       // AuthResultStatus status = AuthResultStatus(e.code);
-      // if (status.value == AuthResultStatusEnum.accountExistsWithDifferentCredential) {
+      // if (status.value == FirebaseAuthCodeEnum.accountExistsWithDifferentCredential) {
       //   final response = await _firebaseAuth.fetchSignInMethodsForEmail('email');
       //   if (response.contains('google.com')) {
       //     final x = await _firebaseAuth.signInWithPopup(GoogleAuthProvider());
@@ -209,8 +221,14 @@ class AuthenticationService extends GetxService {
         firstName: appleCredential.givenName,
         lastName: appleCredential.familyName,
       );
-    } on FirebaseAuthException catch (e) {
-      throw SignInWithCredentialException.fromCode(e.code);
+    } on SignInWithAppleNotSupportedException catch (e) {
+      throw SignInWithCredentialException(message: e.message);
+    } on SignInWithAppleAuthorizationException catch (e) {
+      throw SignInWithCredentialException(message: e.message);
+    } on UnknownSignInWithAppleException catch (e) {
+      throw SignInWithCredentialException(message: e.message ?? 'Unknown error');
+    } on SignInWithCredentialException catch (_) {
+      rethrow;
     } catch (e) {
       throw SignInWithCredentialException();
     }

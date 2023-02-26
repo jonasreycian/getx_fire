@@ -7,5 +7,6 @@ library getx_fire;
 export 'src/core/exceptions.dart';
 // Export the models
 export 'src/models/models.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+// Export the services
+export 'src/services/analytics.dart';
+export 'src/services/auth.dart';

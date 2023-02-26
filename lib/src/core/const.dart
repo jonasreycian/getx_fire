@@ -1,22 +1,4 @@
-/// {@template auth_result_status_enum}
-///
-/// Enum collection of error status of the authentication result.
-///
-/// {@endtemplate}
-enum AuthResultStatusEnum {
-  invalidEmail,
-  userDisabled,
-  emailAlreadyInUse,
-  operationNotAllowed,
-  weakPassword,
-  userNotFound,
-  accountExistsWithDifferentCredential,
-  invalidCredential,
-  wrongPassword,
-  invalidVerificationCode,
-  invalidVerificationId,
-  unknown,
-}
+import '../enums/src/firebase_auth_code.dart';
 
 /// {@template auth_result_status}
 ///
@@ -30,37 +12,37 @@ class AuthResultStatus {
 
   AuthResultStatus(this.code);
 
-  AuthResultStatusEnum get value {
+  FirebaseAuthCodeEnum get value {
     switch (code) {
       case 'invalid-email':
-        return AuthResultStatusEnum.invalidEmail;
+        return FirebaseAuthCodeEnum.invalidEmail;
       case 'user-disabled':
-        return AuthResultStatusEnum.userDisabled;
+        return FirebaseAuthCodeEnum.userDisabled;
       case 'email-already-in-use':
-        return AuthResultStatusEnum.emailAlreadyInUse;
+        return FirebaseAuthCodeEnum.emailAlreadyInUse;
       case 'operation-not-allowed':
-        return AuthResultStatusEnum.operationNotAllowed;
+        return FirebaseAuthCodeEnum.operationNotAllowed;
       case 'weak-password':
-        return AuthResultStatusEnum.weakPassword;
+        return FirebaseAuthCodeEnum.weakPassword;
       case 'user-not-found':
-        return AuthResultStatusEnum.userNotFound;
+        return FirebaseAuthCodeEnum.userNotFound;
       case 'account-exists-with-different-credential':
-        return AuthResultStatusEnum.accountExistsWithDifferentCredential;
+        return FirebaseAuthCodeEnum.accountExistsWithDifferentCredential;
       case 'invalid-credential':
-        return AuthResultStatusEnum.invalidCredential;
+        return FirebaseAuthCodeEnum.invalidCredential;
       case 'wrong-password':
-        return AuthResultStatusEnum.wrongPassword;
+        return FirebaseAuthCodeEnum.wrongPassword;
       case 'invalid-verification-code':
-        return AuthResultStatusEnum.invalidVerificationCode;
+        return FirebaseAuthCodeEnum.invalidVerificationCode;
       case 'invalid-verification-id':
-        return AuthResultStatusEnum.invalidVerificationId;
+        return FirebaseAuthCodeEnum.invalidVerificationId;
       default:
-        return AuthResultStatusEnum.unknown;
+        return FirebaseAuthCodeEnum.unknown;
     }
   }
 }
 
 abstract class StorageKeys {
   static const String userRefreshToken = 'user_refresh_token';
-  static const String userSelectedTheme = 'user_selected_theme';
+  static String userSelectedTheme = 'user_selected_theme';
 }

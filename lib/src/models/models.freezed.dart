@@ -22,8 +22,7 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) {
       return _UserDetailEmpty.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'UserDetail',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(json, 'runtimeType', 'UserDetail', 'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
@@ -31,25 +30,19 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) {
 mixin _$UserDetail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)
-        $default, {
+    TResult Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress) $default, {
     required TResult Function() empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)?
-        $default, {
+    TResult? Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress)? $default, {
     TResult? Function()? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)?
-        $default, {
+    TResult Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress)? $default, {
     TResult Function()? empty,
     required TResult orElse(),
   }) =>
@@ -78,14 +71,12 @@ mixin _$UserDetail {
 
 /// @nodoc
 abstract class $UserDetailCopyWith<$Res> {
-  factory $UserDetailCopyWith(
-          UserDetail value, $Res Function(UserDetail) then) =
+  factory $UserDetailCopyWith(UserDetail value, $Res Function(UserDetail) then) =
       _$UserDetailCopyWithImpl<$Res, UserDetail>;
 }
 
 /// @nodoc
-class _$UserDetailCopyWithImpl<$Res, $Val extends UserDetail>
-    implements $UserDetailCopyWith<$Res> {
+class _$UserDetailCopyWithImpl<$Res, $Val extends UserDetail> implements $UserDetailCopyWith<$Res> {
   _$UserDetailCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -96,26 +87,18 @@ class _$UserDetailCopyWithImpl<$Res, $Val extends UserDetail>
 
 /// @nodoc
 abstract class _$$_UserDetailCopyWith<$Res> {
-  factory _$$_UserDetailCopyWith(
-          _$_UserDetail value, $Res Function(_$_UserDetail) then) =
+  factory _$$_UserDetailCopyWith(_$_UserDetail value, $Res Function(_$_UserDetail) then) =
       __$$_UserDetailCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String id,
-      String? firstName,
-      String? lastName,
-      BillingAddress? billingAddress});
+  $Res call({String id, String? firstName, String? lastName, BillingAddress? billingAddress});
 
   $BillingAddressCopyWith<$Res>? get billingAddress;
 }
 
 /// @nodoc
-class __$$_UserDetailCopyWithImpl<$Res>
-    extends _$UserDetailCopyWithImpl<$Res, _$_UserDetail>
+class __$$_UserDetailCopyWithImpl<$Res> extends _$UserDetailCopyWithImpl<$Res, _$_UserDetail>
     implements _$$_UserDetailCopyWith<$Res> {
-  __$$_UserDetailCopyWithImpl(
-      _$_UserDetail _value, $Res Function(_$_UserDetail) _then)
-      : super(_value, _then);
+  __$$_UserDetailCopyWithImpl(_$_UserDetail _value, $Res Function(_$_UserDetail) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -162,17 +145,11 @@ class __$$_UserDetailCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$_UserDetail extends _UserDetail {
-  _$_UserDetail(
-      {required this.id,
-      this.firstName,
-      this.lastName,
-      this.billingAddress,
-      final String? $type})
+  _$_UserDetail({required this.id, this.firstName, this.lastName, this.billingAddress, final String? $type})
       : $type = $type ?? 'default',
         super._();
 
-  factory _$_UserDetail.fromJson(Map<String, dynamic> json) =>
-      _$$_UserDetailFromJson(json);
+  factory _$_UserDetail.fromJson(Map<String, dynamic> json) => _$$_UserDetailFromJson(json);
 
   @override
   final String id;
@@ -197,31 +174,24 @@ class _$_UserDetail extends _UserDetail {
         (other.runtimeType == runtimeType &&
             other is _$_UserDetail &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.billingAddress, billingAddress) ||
-                other.billingAddress == billingAddress));
+            (identical(other.firstName, firstName) || other.firstName == firstName) &&
+            (identical(other.lastName, lastName) || other.lastName == lastName) &&
+            (identical(other.billingAddress, billingAddress) || other.billingAddress == billingAddress));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, firstName, lastName, billingAddress);
+  int get hashCode => Object.hash(runtimeType, id, firstName, lastName, billingAddress);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserDetailCopyWith<_$_UserDetail> get copyWith =>
-      __$$_UserDetailCopyWithImpl<_$_UserDetail>(this, _$identity);
+  _$$_UserDetailCopyWith<_$_UserDetail> get copyWith => __$$_UserDetailCopyWithImpl<_$_UserDetail>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)
-        $default, {
+    TResult Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress) $default, {
     required TResult Function() empty,
   }) {
     return $default(id, firstName, lastName, billingAddress);
@@ -230,9 +200,7 @@ class _$_UserDetail extends _UserDetail {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)?
-        $default, {
+    TResult? Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress)? $default, {
     TResult? Function()? empty,
   }) {
     return $default?.call(id, firstName, lastName, billingAddress);
@@ -241,9 +209,7 @@ class _$_UserDetail extends _UserDetail {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)?
-        $default, {
+    TResult Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress)? $default, {
     TResult Function()? empty,
     required TResult orElse(),
   }) {
@@ -300,31 +266,26 @@ abstract class _UserDetail extends UserDetail {
       final BillingAddress? billingAddress}) = _$_UserDetail;
   _UserDetail._() : super._();
 
-  factory _UserDetail.fromJson(Map<String, dynamic> json) =
-      _$_UserDetail.fromJson;
+  factory _UserDetail.fromJson(Map<String, dynamic> json) = _$_UserDetail.fromJson;
 
   String get id;
   String? get firstName;
   String? get lastName;
   BillingAddress? get billingAddress;
   @JsonKey(ignore: true)
-  _$$_UserDetailCopyWith<_$_UserDetail> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UserDetailCopyWith<_$_UserDetail> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_UserDetailEmptyCopyWith<$Res> {
-  factory _$$_UserDetailEmptyCopyWith(
-          _$_UserDetailEmpty value, $Res Function(_$_UserDetailEmpty) then) =
+  factory _$$_UserDetailEmptyCopyWith(_$_UserDetailEmpty value, $Res Function(_$_UserDetailEmpty) then) =
       __$$_UserDetailEmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UserDetailEmptyCopyWithImpl<$Res>
-    extends _$UserDetailCopyWithImpl<$Res, _$_UserDetailEmpty>
+class __$$_UserDetailEmptyCopyWithImpl<$Res> extends _$UserDetailCopyWithImpl<$Res, _$_UserDetailEmpty>
     implements _$$_UserDetailEmptyCopyWith<$Res> {
-  __$$_UserDetailEmptyCopyWithImpl(
-      _$_UserDetailEmpty _value, $Res Function(_$_UserDetailEmpty) _then)
+  __$$_UserDetailEmptyCopyWithImpl(_$_UserDetailEmpty _value, $Res Function(_$_UserDetailEmpty) _then)
       : super(_value, _then);
 }
 
@@ -335,8 +296,7 @@ class _$_UserDetailEmpty extends _UserDetailEmpty {
       : $type = $type ?? 'empty',
         super._();
 
-  factory _$_UserDetailEmpty.fromJson(Map<String, dynamic> json) =>
-      _$$_UserDetailEmptyFromJson(json);
+  factory _$_UserDetailEmpty.fromJson(Map<String, dynamic> json) => _$$_UserDetailEmptyFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -348,8 +308,7 @@ class _$_UserDetailEmpty extends _UserDetailEmpty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UserDetailEmpty);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UserDetailEmpty);
   }
 
   @JsonKey(ignore: true)
@@ -359,9 +318,7 @@ class _$_UserDetailEmpty extends _UserDetailEmpty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)
-        $default, {
+    TResult Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress) $default, {
     required TResult Function() empty,
   }) {
     return empty();
@@ -370,9 +327,7 @@ class _$_UserDetailEmpty extends _UserDetailEmpty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)?
-        $default, {
+    TResult? Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress)? $default, {
     TResult? Function()? empty,
   }) {
     return empty?.call();
@@ -381,9 +336,7 @@ class _$_UserDetailEmpty extends _UserDetailEmpty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String id, String? firstName, String? lastName,
-            BillingAddress? billingAddress)?
-        $default, {
+    TResult Function(String id, String? firstName, String? lastName, BillingAddress? billingAddress)? $default, {
     TResult Function()? empty,
     required TResult orElse(),
   }) {
@@ -436,8 +389,7 @@ abstract class _UserDetailEmpty extends UserDetail {
   const factory _UserDetailEmpty() = _$_UserDetailEmpty;
   const _UserDetailEmpty._() : super._();
 
-  factory _UserDetailEmpty.fromJson(Map<String, dynamic> json) =
-      _$_UserDetailEmpty.fromJson;
+  factory _UserDetailEmpty.fromJson(Map<String, dynamic> json) = _$_UserDetailEmpty.fromJson;
 }
 
 BillingAddress _$BillingAddressFromJson(Map<String, dynamic> json) {
@@ -448,8 +400,8 @@ BillingAddress _$BillingAddressFromJson(Map<String, dynamic> json) {
       return _BillingAddressEmpty.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'BillingAddress',
-          'Invalid union type "${json['runtimeType']}"!');
+      throw CheckedFromJsonException(
+          json, 'runtimeType', 'BillingAddress', 'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
@@ -457,25 +409,19 @@ BillingAddress _$BillingAddressFromJson(Map<String, dynamic> json) {
 mixin _$BillingAddress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? street, String? city, String? state,
-            String? country, String? zipCode)
-        $default, {
+    TResult Function(String? street, String? city, String? state, String? country, String? zipCode) $default, {
     required TResult Function() empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? street, String? city, String? state,
-            String? country, String? zipCode)?
-        $default, {
+    TResult? Function(String? street, String? city, String? state, String? country, String? zipCode)? $default, {
     TResult? Function()? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? street, String? city, String? state,
-            String? country, String? zipCode)?
-        $default, {
+    TResult Function(String? street, String? city, String? state, String? country, String? zipCode)? $default, {
     TResult Function()? empty,
     required TResult orElse(),
   }) =>
@@ -504,14 +450,12 @@ mixin _$BillingAddress {
 
 /// @nodoc
 abstract class $BillingAddressCopyWith<$Res> {
-  factory $BillingAddressCopyWith(
-          BillingAddress value, $Res Function(BillingAddress) then) =
+  factory $BillingAddressCopyWith(BillingAddress value, $Res Function(BillingAddress) then) =
       _$BillingAddressCopyWithImpl<$Res, BillingAddress>;
 }
 
 /// @nodoc
-class _$BillingAddressCopyWithImpl<$Res, $Val extends BillingAddress>
-    implements $BillingAddressCopyWith<$Res> {
+class _$BillingAddressCopyWithImpl<$Res, $Val extends BillingAddress> implements $BillingAddressCopyWith<$Res> {
   _$BillingAddressCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -522,24 +466,16 @@ class _$BillingAddressCopyWithImpl<$Res, $Val extends BillingAddress>
 
 /// @nodoc
 abstract class _$$_BillingAddressCopyWith<$Res> {
-  factory _$$_BillingAddressCopyWith(
-          _$_BillingAddress value, $Res Function(_$_BillingAddress) then) =
+  factory _$$_BillingAddressCopyWith(_$_BillingAddress value, $Res Function(_$_BillingAddress) then) =
       __$$_BillingAddressCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String? street,
-      String? city,
-      String? state,
-      String? country,
-      String? zipCode});
+  $Res call({String? street, String? city, String? state, String? country, String? zipCode});
 }
 
 /// @nodoc
-class __$$_BillingAddressCopyWithImpl<$Res>
-    extends _$BillingAddressCopyWithImpl<$Res, _$_BillingAddress>
+class __$$_BillingAddressCopyWithImpl<$Res> extends _$BillingAddressCopyWithImpl<$Res, _$_BillingAddress>
     implements _$$_BillingAddressCopyWith<$Res> {
-  __$$_BillingAddressCopyWithImpl(
-      _$_BillingAddress _value, $Res Function(_$_BillingAddress) _then)
+  __$$_BillingAddressCopyWithImpl(_$_BillingAddress _value, $Res Function(_$_BillingAddress) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -580,18 +516,11 @@ class __$$_BillingAddressCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$_BillingAddress extends _BillingAddress {
-  _$_BillingAddress(
-      {this.street,
-      this.city,
-      this.state,
-      this.country,
-      this.zipCode,
-      final String? $type})
+  _$_BillingAddress({this.street, this.city, this.state, this.country, this.zipCode, final String? $type})
       : $type = $type ?? 'default',
         super._();
 
-  factory _$_BillingAddress.fromJson(Map<String, dynamic> json) =>
-      _$$_BillingAddressFromJson(json);
+  factory _$_BillingAddress.fromJson(Map<String, dynamic> json) => _$$_BillingAddressFromJson(json);
 
   @override
   final String? street;
@@ -626,8 +555,7 @@ class _$_BillingAddress extends _BillingAddress {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, street, city, state, country, zipCode);
+  int get hashCode => Object.hash(runtimeType, street, city, state, country, zipCode);
 
   @JsonKey(ignore: true)
   @override
@@ -638,9 +566,7 @@ class _$_BillingAddress extends _BillingAddress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? street, String? city, String? state,
-            String? country, String? zipCode)
-        $default, {
+    TResult Function(String? street, String? city, String? state, String? country, String? zipCode) $default, {
     required TResult Function() empty,
   }) {
     return $default(street, city, state, country, zipCode);
@@ -649,9 +575,7 @@ class _$_BillingAddress extends _BillingAddress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? street, String? city, String? state,
-            String? country, String? zipCode)?
-        $default, {
+    TResult? Function(String? street, String? city, String? state, String? country, String? zipCode)? $default, {
     TResult? Function()? empty,
   }) {
     return $default?.call(street, city, state, country, zipCode);
@@ -660,9 +584,7 @@ class _$_BillingAddress extends _BillingAddress {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? street, String? city, String? state,
-            String? country, String? zipCode)?
-        $default, {
+    TResult Function(String? street, String? city, String? state, String? country, String? zipCode)? $default, {
     TResult Function()? empty,
     required TResult orElse(),
   }) {
@@ -720,8 +642,7 @@ abstract class _BillingAddress extends BillingAddress {
       final String? zipCode}) = _$_BillingAddress;
   _BillingAddress._() : super._();
 
-  factory _BillingAddress.fromJson(Map<String, dynamic> json) =
-      _$_BillingAddress.fromJson;
+  factory _BillingAddress.fromJson(Map<String, dynamic> json) = _$_BillingAddress.fromJson;
 
   String? get street;
   String? get city;
@@ -729,23 +650,19 @@ abstract class _BillingAddress extends BillingAddress {
   String? get country;
   String? get zipCode;
   @JsonKey(ignore: true)
-  _$$_BillingAddressCopyWith<_$_BillingAddress> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_BillingAddressCopyWith<_$_BillingAddress> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_BillingAddressEmptyCopyWith<$Res> {
-  factory _$$_BillingAddressEmptyCopyWith(_$_BillingAddressEmpty value,
-          $Res Function(_$_BillingAddressEmpty) then) =
+  factory _$$_BillingAddressEmptyCopyWith(_$_BillingAddressEmpty value, $Res Function(_$_BillingAddressEmpty) then) =
       __$$_BillingAddressEmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_BillingAddressEmptyCopyWithImpl<$Res>
-    extends _$BillingAddressCopyWithImpl<$Res, _$_BillingAddressEmpty>
+class __$$_BillingAddressEmptyCopyWithImpl<$Res> extends _$BillingAddressCopyWithImpl<$Res, _$_BillingAddressEmpty>
     implements _$$_BillingAddressEmptyCopyWith<$Res> {
-  __$$_BillingAddressEmptyCopyWithImpl(_$_BillingAddressEmpty _value,
-      $Res Function(_$_BillingAddressEmpty) _then)
+  __$$_BillingAddressEmptyCopyWithImpl(_$_BillingAddressEmpty _value, $Res Function(_$_BillingAddressEmpty) _then)
       : super(_value, _then);
 }
 
@@ -756,8 +673,7 @@ class _$_BillingAddressEmpty extends _BillingAddressEmpty {
       : $type = $type ?? 'empty',
         super._();
 
-  factory _$_BillingAddressEmpty.fromJson(Map<String, dynamic> json) =>
-      _$$_BillingAddressEmptyFromJson(json);
+  factory _$_BillingAddressEmpty.fromJson(Map<String, dynamic> json) => _$$_BillingAddressEmptyFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -769,8 +685,7 @@ class _$_BillingAddressEmpty extends _BillingAddressEmpty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_BillingAddressEmpty);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_BillingAddressEmpty);
   }
 
   @JsonKey(ignore: true)
@@ -780,9 +695,7 @@ class _$_BillingAddressEmpty extends _BillingAddressEmpty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? street, String? city, String? state,
-            String? country, String? zipCode)
-        $default, {
+    TResult Function(String? street, String? city, String? state, String? country, String? zipCode) $default, {
     required TResult Function() empty,
   }) {
     return empty();
@@ -791,9 +704,7 @@ class _$_BillingAddressEmpty extends _BillingAddressEmpty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? street, String? city, String? state,
-            String? country, String? zipCode)?
-        $default, {
+    TResult? Function(String? street, String? city, String? state, String? country, String? zipCode)? $default, {
     TResult? Function()? empty,
   }) {
     return empty?.call();
@@ -802,9 +713,7 @@ class _$_BillingAddressEmpty extends _BillingAddressEmpty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? street, String? city, String? state,
-            String? country, String? zipCode)?
-        $default, {
+    TResult Function(String? street, String? city, String? state, String? country, String? zipCode)? $default, {
     TResult Function()? empty,
     required TResult orElse(),
   }) {
@@ -857,8 +766,7 @@ abstract class _BillingAddressEmpty extends BillingAddress {
   const factory _BillingAddressEmpty() = _$_BillingAddressEmpty;
   const _BillingAddressEmpty._() : super._();
 
-  factory _BillingAddressEmpty.fromJson(Map<String, dynamic> json) =
-      _$_BillingAddressEmpty.fromJson;
+  factory _BillingAddressEmpty.fromJson(Map<String, dynamic> json) = _$_BillingAddressEmpty.fromJson;
 }
 
 ParsedGoogleToken _$ParsedGoogleTokenFromJson(Map<String, dynamic> json) {
@@ -872,14 +780,12 @@ mixin _$ParsedGoogleToken {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ParsedGoogleTokenCopyWith<ParsedGoogleToken> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ParsedGoogleTokenCopyWith<ParsedGoogleToken> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ParsedGoogleTokenCopyWith<$Res> {
-  factory $ParsedGoogleTokenCopyWith(
-          ParsedGoogleToken value, $Res Function(ParsedGoogleToken) then) =
+  factory $ParsedGoogleTokenCopyWith(ParsedGoogleToken value, $Res Function(ParsedGoogleToken) then) =
       _$ParsedGoogleTokenCopyWithImpl<$Res, ParsedGoogleToken>;
   @useResult
   $Res call({String givenName, String familyName});
@@ -915,10 +821,8 @@ class _$ParsedGoogleTokenCopyWithImpl<$Res, $Val extends ParsedGoogleToken>
 }
 
 /// @nodoc
-abstract class _$$_ParsedGoogleTokenCopyWith<$Res>
-    implements $ParsedGoogleTokenCopyWith<$Res> {
-  factory _$$_ParsedGoogleTokenCopyWith(_$_ParsedGoogleToken value,
-          $Res Function(_$_ParsedGoogleToken) then) =
+abstract class _$$_ParsedGoogleTokenCopyWith<$Res> implements $ParsedGoogleTokenCopyWith<$Res> {
+  factory _$$_ParsedGoogleTokenCopyWith(_$_ParsedGoogleToken value, $Res Function(_$_ParsedGoogleToken) then) =
       __$$_ParsedGoogleTokenCopyWithImpl<$Res>;
   @override
   @useResult
@@ -926,11 +830,9 @@ abstract class _$$_ParsedGoogleTokenCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ParsedGoogleTokenCopyWithImpl<$Res>
-    extends _$ParsedGoogleTokenCopyWithImpl<$Res, _$_ParsedGoogleToken>
+class __$$_ParsedGoogleTokenCopyWithImpl<$Res> extends _$ParsedGoogleTokenCopyWithImpl<$Res, _$_ParsedGoogleToken>
     implements _$$_ParsedGoogleTokenCopyWith<$Res> {
-  __$$_ParsedGoogleTokenCopyWithImpl(
-      _$_ParsedGoogleToken _value, $Res Function(_$_ParsedGoogleToken) _then)
+  __$$_ParsedGoogleTokenCopyWithImpl(_$_ParsedGoogleToken _value, $Res Function(_$_ParsedGoogleToken) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -956,11 +858,9 @@ class __$$_ParsedGoogleTokenCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$_ParsedGoogleToken extends _ParsedGoogleToken {
-  _$_ParsedGoogleToken({required this.givenName, required this.familyName})
-      : super._();
+  _$_ParsedGoogleToken({required this.givenName, required this.familyName}) : super._();
 
-  factory _$_ParsedGoogleToken.fromJson(Map<String, dynamic> json) =>
-      _$$_ParsedGoogleTokenFromJson(json);
+  factory _$_ParsedGoogleToken.fromJson(Map<String, dynamic> json) => _$$_ParsedGoogleTokenFromJson(json);
 
   @override
   final String givenName;
@@ -977,10 +877,8 @@ class _$_ParsedGoogleToken extends _ParsedGoogleToken {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ParsedGoogleToken &&
-            (identical(other.givenName, givenName) ||
-                other.givenName == givenName) &&
-            (identical(other.familyName, familyName) ||
-                other.familyName == familyName));
+            (identical(other.givenName, givenName) || other.givenName == givenName) &&
+            (identical(other.familyName, familyName) || other.familyName == familyName));
   }
 
   @JsonKey(ignore: true)
@@ -991,8 +889,7 @@ class _$_ParsedGoogleToken extends _ParsedGoogleToken {
   @override
   @pragma('vm:prefer-inline')
   _$$_ParsedGoogleTokenCopyWith<_$_ParsedGoogleToken> get copyWith =>
-      __$$_ParsedGoogleTokenCopyWithImpl<_$_ParsedGoogleToken>(
-          this, _$identity);
+      __$$_ParsedGoogleTokenCopyWithImpl<_$_ParsedGoogleToken>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1003,13 +900,11 @@ class _$_ParsedGoogleToken extends _ParsedGoogleToken {
 }
 
 abstract class _ParsedGoogleToken extends ParsedGoogleToken {
-  factory _ParsedGoogleToken(
-      {required final String givenName,
-      required final String familyName}) = _$_ParsedGoogleToken;
+  factory _ParsedGoogleToken({required final String givenName, required final String familyName}) =
+      _$_ParsedGoogleToken;
   _ParsedGoogleToken._() : super._();
 
-  factory _ParsedGoogleToken.fromJson(Map<String, dynamic> json) =
-      _$_ParsedGoogleToken.fromJson;
+  factory _ParsedGoogleToken.fromJson(Map<String, dynamic> json) = _$_ParsedGoogleToken.fromJson;
 
   @override
   String get givenName;
@@ -1017,6 +912,5 @@ abstract class _ParsedGoogleToken extends ParsedGoogleToken {
   String get familyName;
   @override
   @JsonKey(ignore: true)
-  _$$_ParsedGoogleTokenCopyWith<_$_ParsedGoogleToken> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ParsedGoogleTokenCopyWith<_$_ParsedGoogleToken> get copyWith => throw _privateConstructorUsedError;
 }
